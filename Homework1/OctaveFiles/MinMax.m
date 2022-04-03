@@ -16,7 +16,7 @@
     %x2=linprog(f2,A2,b2,[],[],xlow2,xup2);
     [x2] = glpk (f2, A2, b2, xlow2, xup2);
     v2=1/sum(x2);
-    p1=v1*x1
-    p2=v2*x2
-    V=p1'*A*p2
+    p1=v1*x1;
+    p2=v2*x2;
+    V=p1'*A*p2;
 end
