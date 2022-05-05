@@ -20,7 +20,7 @@ switch array
 end
 
 
-mode = 1; % mode selects method of solution:
+mode = 2; % mode selects method of solution:
     % 1 pure NE
     % 2 graphical solution
     % 3 non linear
@@ -35,9 +35,13 @@ switch mode
         P
     case 2
         % graphical solution
-        [p11,p12,p21,p22] = NashPlot(A1,A2);
-        P = [p11,p12,p21,p22];
-        P
+        if (and(size(A1)(1) == 2, size(A1)(2) == 2))
+            [p11,p12,p21,p22] = NashPlot(A1,A2);
+            P = [p11,p12,p21,p22];
+            P
+        else
+            disp ("Not a 2x2 matrix")
+        endif
     case 3
         % non linear
         [p11,p12,p21,p22] = Nash(A1,A2);
@@ -53,3 +57,4 @@ switch mode
         [p11,p12,p21,p22] = zeros(2,2);
         P = [p11,p12,p21,p22];
         P    
+    end
