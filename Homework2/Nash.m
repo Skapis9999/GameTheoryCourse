@@ -1,4 +1,5 @@
 function [p1,v1,p2,v2,test]=Nash(A1,A2)
+  pkg load optim;
  %initialization
  [M1,M2]=size(A1);
  x0=rand(M1+M2+2,1);
