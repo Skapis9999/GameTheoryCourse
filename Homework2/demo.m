@@ -30,8 +30,7 @@ mode = 2; % mode selects method of solution:
 switch mode
     case 1
         % pure NE
-        [p11,p12,p21,p22] = NashPure(A1,A2);
-        P = [p11,p12,p21,p22];
+        P = NashPure(A1,A2);
         P
     case 2
         % graphical solution
@@ -44,8 +43,8 @@ switch mode
         endif
     case 3
         % non linear
-        [p11,p12,p21,p22] = Nash(A1,A2);
-        P = [p11,p12,p21,p22];
+        [p11,p12,p21,p22,test] = Nash(A1,A2);
+        P = [p11,p12,p21,p22,test];
         P    
     case 4
         % fictitious play
