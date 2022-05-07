@@ -1,4 +1,4 @@
-[p1,p2,V]=FictPlay(A,P0,m0,Iter)
+function [p1,p2,V]=FictPlay(A,P0,m0,Iter)
     M = size(A)
     
     next = -1;
@@ -14,7 +14,7 @@
             p1 = A(mo,I);
             p2 = -A(mo,I);
             next = 2;    %end of turn
-        elseif
+        elseif (next==2)
             [M,I] = max(A(:,mo))
             p1 = A(I,mo);
             p2 = -A(I,mo);
