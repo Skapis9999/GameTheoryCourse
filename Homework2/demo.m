@@ -1,3 +1,4 @@
+pkg load optim
 array = 1; % array selects 1 of the 5 arays of ex.2
 
 switch array
