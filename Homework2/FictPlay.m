@@ -6,18 +6,21 @@ function [p1,p2,V]=FictPlay(A,P0,m0,Iter)
     elseif(P0 == 1)
         next = 2;
     endif
+    previousMove = m0;
     
     for i = 1:Iter
         if (next==1)
-            [M,I] = max(A(m0,:))
-            p1 = A(m0,I);
-            p2 = -A(m0,I);
+            [M,I] = max(A(previousMove,:));
+            p1 = A(previousMove,I);
+            p2 = -A(previousMove,I);
             next = 2;    %end of turn
+            previousMove = I;
         elseif (next==2)
-            [M,I] = min(A(:,m0))
-            p1 = A(I,m0);
-            p2 = -A(I,m0);
+            [M,I] = min(A(:,previousMove));
+            p1 = A(I,previousMove);
+            p2 = -A(I,previousMove);
             next = 1;    %end of turn
+            previousMove = I;
         else
             disp ("Error")    
         endif
