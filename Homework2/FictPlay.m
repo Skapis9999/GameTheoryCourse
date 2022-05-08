@@ -1,6 +1,6 @@
 function [p1,p2,V]=FictPlay(A,P0,m0,Iter)
     % Init
-    [M1,M2]=size(A1);
+    [M1,M2]=size(A);
     p1 = zeros(M1, 1)';
     p2 = zeros(M2, 1)';
     
