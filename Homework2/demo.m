@@ -41,8 +41,8 @@ switch mode
         endif
     case 3
         % non linear
-        [p11,p12,p21,p22,test] = Nash(A1,A2);
-        P = [p11,p12,p21,p22,test];
+        [p11,v1,p21,v2,test] = Nash(A1,A2);
+        P = [p11,v1,p21,v2,test];
         P    
     case 4
         % fictitious play
