@@ -42,10 +42,12 @@ switch mode
             disp ("Not a 2x2 matrix")
         endif
     case 3
-        % non linear
+        % non linear, only works on matlab
+        #{
         [p11,v1,p21,v2,test] = Nash(A1,A2);
         P = [p11,v1,p21,v2,test];
-        P    
+        P 
+        #}
     case 4
         % fictitious play
         [p1,V1,p2,V2] = FictPlayB(A1,A2,1,1,4);
