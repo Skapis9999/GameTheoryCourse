@@ -1,4 +1,4 @@
-array = 1; % array selects 1 of the 5 arays of ex.2
+array = 4; % array selects 1 of the 5 arays of ex.2
 
 switch array
     case 1
@@ -20,7 +20,7 @@ switch array
 end
 
 
-mode = 1; % mode selects method of solution:
+mode = 4; % mode selects method of solution:
     % 1 pure NE
     % 2 graphical solution
     % 3 non linear
@@ -48,12 +48,12 @@ switch mode
         P    
     case 4
         % fictitious play
-        [p11,p12,p21,p22] = FictPlayB(A1,A2,P0,m0,Iter);
-        P = [p11,p12,p21,p22];
-        P
+        [p1,V1,p2,V2] = FictPlayB(A1,A2,1,1,4);
+        P = [p1, p2];
+        V = [V1, V2];
     case 5
         % Gambit
-        [p11,p12,p21,p22] = zeros(2,2);
+        [p11,p12,p21,p22] = zeros(4,1);
         P = [p11,p12,p21,p22];
         P    
     end
