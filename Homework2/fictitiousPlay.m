@@ -1,4 +1,4 @@
-array = 7; % array selects 1 of the 5 arays of ex.2
+array = 1; % array selects 1 of the 5 arays of ex.2
 
 switch array
     case 1
@@ -24,7 +24,8 @@ switch array
         A2=[-4 -1 6 1; 0 2 0 -2; -3 1 -1 -3; 3 -5 2 1]; 
 end
 
-
-[p1,V1,p2,V2] = FictPlayB(A1,A2,1,1,4);
+% P0 ειναι ο παικτης ο οποιος παιζει πρωτος, m0 
+% ειναι η πρωτη κινηση και Iter ειναι ο αριθμος επαναληψεων
+[p1,V1,p2,V2] = FictPlayB(A1,A2,2,1,11);
 P = [p1, p2]
 V = [V1, V2]
