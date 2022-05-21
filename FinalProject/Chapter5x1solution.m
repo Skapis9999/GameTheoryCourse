@@ -57,6 +57,20 @@ A =[double(S.x1)';double(S.x2)'];
 J=jacobian(eqns,[x1,x2]);
 a=[0,1,0,1,1/4,0,1,1/3,-1.7808,0.2808];
 b=[0,0,1,1,0,1/4,1/3,1,-1.7808,0.2808];
-i=10;
+i=9;
 [a(i),b(i)];
 j1 = subs(J,[x1,x2],[a(i),b(i)]);
+
+syms x1 x2
+eqn1 = -2*x2*x1^3 + 3*x2*x1^2 -4*x1^3+5*x1^2-x1*x2-x1;
+eqn2 = 2*x1*x2^3-3*x1*x2^2+10*x2^2+x1*x2-4*x2-6*x2^3;
+eqns = [eqn1,eqn2];
+S2 = solve(eqns);
+A =[double(S2.x1)';double(S2.x2)'];
+c = double(S2.x1)';
+d = double(S2.x2)';
+
+J2=jacobian(eqns,[x1,x2]);
+j2 = subs(J,[x1,x2],[c(i),d(i)]);
+
+
