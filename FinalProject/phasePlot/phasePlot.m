@@ -1,6 +1,9 @@
 clear all
 clc
 
+% f is for part 4
+% f1 is for part 5
+
 figure(1)
 [X,Y] = meshgrid(-0.5:0.05:0.5,-0.5:0.05:0.5);
 clf
