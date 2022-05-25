@@ -36,9 +36,11 @@ for i = 1:100
     profit2 = x*p - x*cost2(x2);
     if(profit1 < lastProfit1)
         mode1=2;
+        x1=x1-1;
     end
     if(profit2 < lastProfit2)
         mode2=2;
+        x2=x2-1;
     end
     history1 = [history1,x1];
     history2 = [history2,x2];
