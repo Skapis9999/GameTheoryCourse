@@ -36,12 +36,14 @@ for i = 1:100
     profit2 = x*p - x*cost2(x2);
     if(profit1 < lastProfit1)
         mode1=2;
-        x1=x1-1;
+        x1=x1;
     end
     if(profit2 < lastProfit2)
         mode2=2;
-        x2=x2-1;
+        x2=x2;
     end
+    lastProfit1 = profit1;
+    lastProfit2 = profit2;
     history1 = [history1,x1];
     history2 = [history2,x2];
     x1
@@ -50,9 +52,18 @@ end
 
 l = size(history1);
 x = 1:1:l(2);
+profit1 = history1.*price(history1+history2) - history1.*cost1(history1);
+profit2 = history2.*price(history1+history2) - history2.*cost1(history2);
+
+
 
 figure(4)
 plot(x,history1,x,history2)
+legend('historical quantities 1','historical quantities 2')
+
+figure(5)
+plot(x,profit1,x,profit2)
+legend('historical profit 1','historical profit 2')
 
 
 
