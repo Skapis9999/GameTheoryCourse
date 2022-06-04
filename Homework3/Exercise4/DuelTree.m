@@ -2,14 +2,14 @@ function [Tr,O,U0]=DuelTree(D,PH1,PH2)
 #D=10;
 k=2
 
-O=zeros(2*D+1,1); 
+O=zeros(2*D+1,1);
 Tr=zeros(2*D+1,1);
 U0=zeros(2*D+1,1);
 O(1)=1;
 
 for j=2:2D+1
    odd=mod (j, 2);
-   Tr(j)=j-1-odd ; 
+   Tr(j)=j-1-odd ;
    if(!odd)
      O(j)=0; #even vertices respresent the leaves
      if(O(j-1)==1) #the one who played at the last odd vertice shoots
