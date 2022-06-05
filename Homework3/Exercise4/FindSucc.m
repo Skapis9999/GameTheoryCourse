@@ -1,15 +1,27 @@
 function S = FindSucc (Tr,U,D)
   s=size(Tr,1);
   S=-ones(s,1);
-  for j=1:s
-    for t=1:s
-      if(Tr(t)==j&&U(t)==U(j)) #checks if node is child and if payoff is max
-        S(j)=t; #highest payoff child node stored as best next move
-    endfor
+  k=1; #we start with player 1
+  S(s-1)=s; #only one choice at the last step: to shoot.
+  for j=1:s-2
+    if(mod(j,2)) #for non-final nodes
+      if(U(j+1)>=U(j+2)) #compare the payoff of the 2 child nodes
+        if(k==1)  #player 1 chooses
+          S(j)=j+1;
+          k=2;
+        else
+          S(j)=j+2;
+          k=1;
+        endif
+      else
+        if(k==2) #player 2 chooses
+          S(j)=j+1;
+          k=1;
+        else
+          S(j)=j+2;
+          k=2;
+        endif
+      endif
+    endif 
   endfor
 endfunction
-
-
-#Tr(t) returns the parent node of node t
-#U(t)==U(j) means that the parent j has the same payoff as child t which
-#only happens if child t has the best payoff among j's children

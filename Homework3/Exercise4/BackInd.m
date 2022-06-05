@@ -3,39 +3,29 @@ s=size(Tr,1);
 U=zeros(s,1);
 
 
-% a and b are the probabillities to shoot and not to shoot
-a=1/2;
-b=1/2;
 
 for j=1:s
   if (U0(j))                  #for final states we have fixed payoff
     if(O(j-1)==p)
-      U(j)=U0(j)
+      U(j)=2*U0(j)-1; %prop hitting *1 plus prop of missing *(-1)
     else
-      U(j)=-U0(j)
+      U(j)=1-2*U0(j); 
     endif
-    endif
+  endif
 endfor
 
-for j=s:-1:1                  #start from final node and update step by step
-##  max=0;
-##  if (!U0(j))                 #for non-final states we need to examine child-nodes
-##    for t=1:s
-##      if(Tr(t)==j&&U(t)>max)  #nodes that have our current node as a parent
-##        max=U(t)              #update the maximum payoff for the current node
-##      endif
-##    endfor
-##    endif
-##    U(j)=max+1;
+for j=s:-1:1              #start from final node and update step by step
   if (!U0(j))
     if(j==s-1)
-      U(j)=U(j+1)
+      U(j)=U(j+1);
     else
-      U(j)=a*U(j+1)+b*U(j+2)
+      if(O(j)==p) 
+        U(j)=max(U(j+1),U(j+2)); #player one tries to maximise the payoff
+      else
+        U(j)=min(U(j+1),U(j+2));#player two tries to minimise the payoff
+      endif
     endif
-
   endif
-
-
 endfor
 endfunction
+

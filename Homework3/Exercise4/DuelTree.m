@@ -17,7 +17,7 @@ for j=2:2*D
      else
        U0(j)=PH2(D-j/2+1);
      endif
-   else                    #odd vertices represent the non-final vertices
+   else                    #odd vertices represent the non-final states
      O(j)=k;
      k=O(j-2);
    endif
