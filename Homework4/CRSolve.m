@@ -8,8 +8,10 @@ function [V,Sc,Sr]= CRSolve(A)
 
   outD=zeros(n,1); %find outdegree for each vertice  
   for i=1:k
-    temp=A(i,1);
-    outD(temp)+=1;
+    temp1=A(i,1);
+    temp2=A(i,2);
+    outD(temp1)+=1;
+    outD(temp2)+=1;
   endfor
   maxOut=max(outD); %to save computational time and space
   
@@ -29,9 +31,12 @@ function [V,Sc,Sr]= CRSolve(A)
   for i=1:n
     temp=outD(i);%node I will have outD children
     for j=1:k
-      if(A(j,1)==i) %find the edges that start from vertice n
-        nextVertices(i,temp)=A(j,2); %fill with children nodes of n
+      if(A(j,1)==i) %find the edges that start from vertice i
+        nextVertices(i,temp)=A(j,2); %fill with children nodes of i
         temp-=1; %should never go below 1
+      elseif(A(j,2)==i) %find the edges that start from vertice i
+        nextVertices(i,temp)=A(j,1); %fill with children nodes of i
+        temp-=1; %should never go below 1      
       endif
     endfor
   endfor
@@ -102,11 +107,10 @@ function [V,Sc,Sr]= CRSolve(A)
     endfor
   endfor
   
-  val
   Sc=zeros(n,n);
   Sr=zeros(n,n);
   V=zeros(n,n);
-  for i=1:s %loop to fill the Sc,Sr tables
+  for i=1:s %loop to fill the Sc,Sr,V tables
     child=nextStates(i,:);%find the states you can go from state i
     child(child==0)=[];%remove zero elements
     sz=size(child,2); %amount of possible moves from the current state
