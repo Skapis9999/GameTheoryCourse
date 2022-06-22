@@ -9,8 +9,8 @@ a00 = -1;
 
 syms x1 x2
 % Equations with x and y, a's replaced with numerical values for chapter4
-% eqn = (1*x*y+1*x*(1-y)+-1*(1-x)*y+-1*(1-x)*(1-y))*x*(1-x);
-% eqn2 = (1*x*y+1*y*(1-x)+-1*(1-y)*x+-1*(1-y)*(1-x))*y*(1-y);
+% eqn = (1*x*y+1*x*(1-y)-1*(1-x)*y-1*(1-x)*(1-y))*x*(1-x);
+% eqn2 = (1*x*y+1*y*(1-x)-1*(1-y)*x-1*(1-y)*(1-x))*y*(1-y);
 eqn = (a11*x1*x2+a10*x1*(1-x2)+a01*(1-x1)*x2+a00*(1-x1)*(1-x2))*x1*(1-x1);
 eqn2 = (a11*x1*x2+a10*x2*(1-x1)+a01*(1-x2)*x1+a00*(1-x2)*(1-x1))*x2*(1-x2);
 

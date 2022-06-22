@@ -1,18 +1,23 @@
 clearvars
 
-%% Chapter 5
+%% Chapter 6
 
-a11 = 2;
-a10 = 2;
-a01 = -9;
-a00 = -9;
+a11 = 1;
+a10 = 1;
+a01 = -1;
+a00 = -1;
+
+b00 = 1;
+b01 = 1;
+b10 = -1;
+b11 = -1;
 
 syms x1 x2
 % Equations with x and y, a's replaced with numerical values for chapter4
-% eqn = (2*x*y+2*x*(1-y)-9*(1-x)*y-9*(1-x)*(1-y))*x*(1-x);
-% eqn2 = (2*x*y+2*y*(1-x)-9*(1-y)*x-9*(1-y)*(1-x))*y*(1-y);
+% eqn = (1*x*y+1*x*(1-y)+-1*(1-x)*y+-1*(1-x)*(1-y))*x*(1-x);
+% eqn2 = (-1*x*y+1*y*(1-x)+-1*(1-y)*x+-1*(1-y)*(1-x))*y*(1-y);
 eqn = (a11*x1*x2+a10*x1*(1-x2)+a01*(1-x1)*x2+a00*(1-x1)*(1-x2))*x1*(1-x1);
-eqn2 = (a11*x1*x2+a10*x2*(1-x1)+a01*(1-x2)*x1+a00*(1-x2)*(1-x1))*x2*(1-x2);
+eqn2 = (b11*x1*x2+b10*x2*(1-x1)+b01*(1-x2)*x1+b00*(1-x2)*(1-x1))*x2*(1-x2);
 
 S = vpasolve([eqn==0,eqn2==0], [x1 x2]);
 S.x1;
