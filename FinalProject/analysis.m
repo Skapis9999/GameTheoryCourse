@@ -13,12 +13,19 @@ A =[double(S.x1)';double(S.x2)'];
 % Jacobians
 eqns = [eqn,eqn2];
 J=jacobian(eqns,[x1,x2]);
-a = size(A(1,:));
-for i = 1:a(2)
+l = size(A(1,:));
+stability = size(A(1,:));
+
+for i = 1:l(2)
     % remove ; to see couples and their Jacobians
     [A(1,i),A(2,i)];
     j1 = subs(J,[x1,x2],[A(1,i),A(2,i)]);
-    eig(j1);
+    e = eig(j1);
+    if(e(1)<0 && e(2)<0)
+        stability(i)=1;
+    else
+        stability(i)=-1;
+    end
 end
 
 % Phase Plots
@@ -31,6 +38,16 @@ c = b(:,1:size(X));
 d = b(:,size(X)+1:end);
 quiver(X,Y,c,d,'Color','r','LineWidth',2) 
 hold on
-plot(A(1,:),A(2,:), '.', 'markersize', 8)
+for i = 1:l(2)
+    if (stability(i)==1)
+        plot(A(1,i),A(2,i), '*', 'markersize', 8)
+        hold on
+    else
+        plot(A(1,i),A(2,i), '.', 'markersize', 8)
+        hold on
+    end
 end
+title(sprintf('Phase Plot Chapter %d', j))
 
+
+end
